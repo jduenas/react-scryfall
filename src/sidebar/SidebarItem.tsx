@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export interface SidebarItemProps {
   iconUri: string;
@@ -9,11 +10,11 @@ export interface SidebarItemProps {
   selected: boolean;
 }
 
-export interface SelectionProps {
+export interface SelectionStyle {
   selected?: boolean;
 }
 
-const Container = styled.div<SelectionProps>`
+const Container = styled.div<SelectionStyle>`
   display: flex;
   height: 40px;
   padding-left: 15px;
@@ -29,19 +30,36 @@ const Icon = styled.img`
   align-self: center;
 `;
 
-const Title = styled.span`
+const Title = styled.span<SelectionStyle>`
   align-self: center;
+  font-size: 12px;
+  font-weight: ${props => (props.selected ? "bold" : "normal")};
+`;
+
+const StyledLink = styled(Link)<SelectionStyle>`
+  text-decoration: none;
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+    color: ${props => (props.selected ? "#032d63" : "black")};
+    font-weight: ${props => (props.selected ? "bold" : "normal")};
+  }
 `;
 
 const SidebarItem: React.FC<SidebarItemProps> = props => {
   return (
-    <Container
-      onClick={_ => props.onClicked(props.key)}
-      selected={props.selected}
-    >
-      <Icon src={props.iconUri}></Icon>
-      <Title>{props.displayName}</Title>
-    </Container>
+    <StyledLink to={`/set/${props.displayName}`} selected={props.selected}>
+      <Container
+        onClick={_ => props.onClicked(props.key)}
+        selected={props.selected}
+      >
+        <Icon src={props.iconUri}></Icon>
+        <Title>{props.displayName}</Title>
+      </Container>
+    </StyledLink>
   );
 };
 
