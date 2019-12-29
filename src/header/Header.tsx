@@ -5,10 +5,6 @@ import Profile from "./Profile";
 const HeaderContainer = styled.div`
   height: 40px;
   background: #004b8b;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
   display: flex;
   padding-right: 15px;
   justify-content: space-between;
@@ -29,7 +25,7 @@ const StyledProfile = styled(Profile)`
 
 const Header = (props: any) => {
   return (
-    <HeaderContainer>
+    <HeaderContainer className={props.className}>
       <Title>Scryfall</Title>
       <StyledProfile
         name="John Smith"

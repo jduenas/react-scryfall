@@ -6,10 +6,9 @@ import ScryfallSet from "../models/ScryfallSet";
 
 const neutralBgPrimary = "#f3f2f1";
 const Container = styled.div`
-  width: 300px;
   background: ${neutralBgPrimary};
   padding-top: 20px;
-  height: 100%;
+  height: 100vh;
   overflow-y: auto;
 `;
 
@@ -18,7 +17,7 @@ interface SidebarState {
   selectedItem: string;
 }
 
-const Sidebar: React.FC = props => {
+const Sidebar: React.FC = (props: any) => {
   const [sets, setMtgSets] = useState({
     items: [],
     selectedItem: ""
@@ -60,7 +59,7 @@ const Sidebar: React.FC = props => {
     );
   });
 
-  return <Container>{sidebarItems}</Container>;
+  return <Container className={props.className}>{sidebarItems}</Container>;
 };
 
 export default Sidebar;
