@@ -23,9 +23,9 @@ const Sidebar: React.FC = (props: any) => {
     selectedItem: ""
   } as SidebarState);
 
-  const selectItem = (item: string) => {
-    console.log(`Selected: ${item}`);
-    setMtgSets({ items: [...sets.items], selectedItem: item });
+  const selectItem = (item: ScryfallSet) => {
+    console.log(`Selected`, item);
+    setMtgSets({ items: [...sets.items], selectedItem: item.code });
   };
 
   const context = useContext(AppContext);
@@ -50,11 +50,10 @@ const Sidebar: React.FC = (props: any) => {
   const sidebarItems = sets.items.map(set => {
     return (
       <SidebarItem
-        selected={sets.selectedItem === set.name}
-        onClicked={event => selectItem(set.name)}
-        key={set.name}
-        displayName={set.name}
-        iconUri={set.icon_svg_uri}
+        selected={sets.selectedItem === set.code}
+        onClicked={event => selectItem(event)}
+        key={set.code}
+        set={set}
       ></SidebarItem>
     );
   });

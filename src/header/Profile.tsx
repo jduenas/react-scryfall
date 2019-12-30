@@ -16,6 +16,7 @@ const StyledImage = styled.img`
 
 const ProfileContainer = styled.div`
   display: flex;
+  margin-right: 15px;
 `;
 
 const DisplayName = styled.span`

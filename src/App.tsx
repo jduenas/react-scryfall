@@ -19,6 +19,7 @@ const GridContainer = styled.div`
 const PositionedHeader = styled(Header)`
   grid-row: 1 / 2;
   grid-column: 1 / 3;
+  width: 100%;
 `;
 
 const PositionedSidebar = styled(Sidebar)`

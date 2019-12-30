@@ -1,13 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import ScryfallSet from "../models/ScryfallSet";
 
 export interface SidebarItemProps {
-  iconUri: string;
-  key: string;
-  displayName: string;
-  onClicked: (key: string) => void;
+  onClicked: (key: ScryfallSet) => void;
   selected: boolean;
+  set: ScryfallSet;
 }
 
 export interface SelectionStyle {
@@ -51,13 +50,13 @@ const StyledLink = styled(Link)<SelectionStyle>`
 
 const SidebarItem: React.FC<SidebarItemProps> = props => {
   return (
-    <StyledLink to={`/set/${props.displayName}`} selected={props.selected}>
+    <StyledLink to={`/set/${props.set.code}`} selected={props.selected}>
       <Container
-        onClick={_ => props.onClicked(props.key)}
+        onClick={_ => props.onClicked(props.set)}
         selected={props.selected}
       >
-        <Icon src={props.iconUri}></Icon>
-        <Title>{props.displayName}</Title>
+        <Icon src={props.set.icon_svg_uri}></Icon>
+        <Title>{props.set.name}</Title>
       </Container>
     </StyledLink>
   );

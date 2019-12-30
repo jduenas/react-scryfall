@@ -3,10 +3,10 @@ import styled from "styled-components";
 import Profile from "./Profile";
 
 const HeaderContainer = styled.div`
-  height: 40px;
+  height: 100%;
+  width: 100%;
   background: #004b8b;
   display: flex;
-  padding-right: 15px;
   justify-content: space-between;
 `;
 
